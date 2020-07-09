@@ -8,8 +8,17 @@ import (
 func main() {
 	contact.InitConfig()
 
+	// option
+	contact.InitLog()
+	defer contact.LogClose()
+
+	// option
 	contact.InitDB()
 	defer contact.Db.Close()
+
+	// option
+	contact.InitRedis()
+	defer contact.RedisClose()
 
 	contact.InitGin()
 
