@@ -6,11 +6,8 @@ import (
 )
 
 func main() {
-	contact.InitConfig()
-
-	// option
-	contact.InitLog()
-	defer contact.LogClose()
+	contact.Init()
+	defer contact.Close()
 
 	// option
 	contact.InitDB()
@@ -19,8 +16,6 @@ func main() {
 	// option
 	contact.InitRedis()
 	defer contact.RedisClose()
-
-	contact.InitGin()
 
 	InitRoute().Run(fmt.Sprintf(":%d", contact.Config.App.Port))
 }
